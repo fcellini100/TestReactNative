@@ -8,6 +8,7 @@ import {
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../navigation';
 import Dialog from '../components/Dialog';
+import { useTheme } from '../theme/ThemeContext';
 
 type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -18,6 +19,7 @@ interface HomeScreenProps {
 function HomeScreen({ navigation }: HomeScreenProps): React.JSX.Element {
   const [modalVisible, setModalVisible] = useState(false);
   const [isDialogReady, setIsDialogReady] = useState(false);
+  const { colors } = useTheme();
 
   useEffect(() => {
     // Ensure Dialog is loaded before showing it
@@ -25,10 +27,10 @@ function HomeScreen({ navigation }: HomeScreenProps): React.JSX.Element {
   }, []);
 
   return (
-    <View style={styles.content}>
-      <Text style={styles.text}>HELLO WORLD</Text>
+    <View style={[styles.content, { backgroundColor: colors.background }]}>
+      <Text style={[styles.text, { color: colors.text }]}>HELLO WORLD</Text>
       <TouchableOpacity 
-        style={styles.button}
+        style={[styles.button, { backgroundColor: colors.primary }]}
         onPress={() => setModalVisible(true)}
       >
         <Text style={styles.buttonText}>Open Dialog</Text>
@@ -54,11 +56,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#000000',
     marginBottom: 20,
   },
   button: {
-    backgroundColor: '#007AFF',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 8,

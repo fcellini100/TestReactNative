@@ -5,6 +5,7 @@ import { TouchableOpacity, Text } from 'react-native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RouteProp } from '@react-navigation/native';
 import { enableScreens } from 'react-native-screens';
+import { useTheme } from '../theme/ThemeContext';
 import HomeScreen from '../screens/HomeScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -21,9 +22,21 @@ type HomeScreenRouteProp = RouteProp<RootStackParamList, 'Home'>;
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function Navigation(): React.JSX.Element {
+  const { colors } = useTheme();
+
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: colors.background,
+          },
+          headerTintColor: colors.text,
+          headerTitleStyle: {
+            color: colors.text,
+          },
+        }}
+      >
         <Stack.Screen 
           name="Home" 
           component={HomeScreen}
@@ -33,7 +46,7 @@ function Navigation(): React.JSX.Element {
                 onPress={() => navigation.navigate('Settings')}
                 style={{ marginRight: 15 }}
               >
-                <Text style={{ color: '#007AFF' }}>Settings</Text>
+                <Text style={{ color: colors.primary }}>Settings</Text>
               </TouchableOpacity>
             ),
           })}

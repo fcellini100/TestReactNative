@@ -8,11 +8,14 @@
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Navigation from './src/navigation';
+import { ThemeProvider } from './src/theme/ThemeContext';
 
 function App(): React.JSX.Element {
   return (
     <SafeAreaProvider>
-      <Navigation />
+      <ThemeProvider>
+        <Navigation />
+      </ThemeProvider>
     </SafeAreaProvider>
   );
 }
