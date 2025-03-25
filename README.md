@@ -1,39 +1,72 @@
-# Test React Native Project
+# TestReactNative
 
-This is a React Native application project.
+A React Native project to test different features and components.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js
-- npm or yarn
-- React Native CLI
-- iOS Simulator (for Mac) or Android Studio (for Android development)
+- Node.js (v18 or later)
+- npm (v9 or later)
+- Xcode (for iOS development)
+- Android Studio (for Android development)
 
 ### Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/TestReactNative.git
+git clone https://github.com/fcellini/TestReactNative.git
 cd TestReactNative
 ```
 
-2. Install dependencies:
+2. Install and use the correct Node.js version:
+```bash
+# If you have nvm installed
+nvm install
+nvm use
+
+# If you don't have nvm installed, you can install it from:
+# https://github.com/nvm-sh/nvm#installing-and-updating
+```
+
+3. Install dependencies:
 ```bash
 npm install
-# or
-yarn install
 ```
 
-3. Start the application:
+4. iOS Setup:
 ```bash
-# For iOS
-npx react-native run-ios
-
-# For Android
-npx react-native run-android
+cd ios
+pod install
+cd ..
 ```
+
+### Running the App
+
+#### iOS
+```bash
+npm run ios
+```
+
+#### Android
+```bash
+npm run android
+```
+
+## Project Structure
+
+```
+src/
+  ├── components/     # Reusable UI components
+  ├── screens/       # Screen components
+  └── navigation/    # Navigation configuration
+```
+
+## Features
+
+- React Navigation setup with TypeScript support
+- Safe area handling for iOS and Android
+- Custom Dialog component
 
 ## Development
 

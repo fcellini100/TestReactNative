@@ -5,9 +5,17 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '../navigation';
 import Dialog from '../components/Dialog';
 
-function HomeScreen(): React.JSX.Element {
+type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
+
+interface HomeScreenProps {
+  navigation: HomeScreenNavigationProp;
+}
+
+function HomeScreen({ navigation }: HomeScreenProps): React.JSX.Element {
   const [modalVisible, setModalVisible] = useState(false);
   const [isDialogReady, setIsDialogReady] = useState(false);
 
